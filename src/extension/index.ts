@@ -764,6 +764,7 @@ export default function registerSubagentExtension(pi: ExtensionAPI): void {
 		description: buildSubagentToolDescription(config),
 		...buildSubagentToolPromptMetadata(config),
 		parameters,
+		executionMode: "sequential",
 
 		async execute(id, params, signal, onUpdate, ctx) {
 			return finalizeToolResult(await executeSubagentCollapsed(id, params as SubagentParamsLike, signal ?? new AbortController().signal, onUpdate, ctx));
